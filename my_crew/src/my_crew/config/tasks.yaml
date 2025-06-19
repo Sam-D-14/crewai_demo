@@ -1,0 +1,15 @@
+research_task:
+  description: >
+    Research the latest trends in artificial intelligence – recent advances,
+    key players and future outlook.
+  expected_output: >
+    A concise but detailed report outlining the trends, companies and predictions.
+  
+
+writing_task:
+  description: >
+    Using the above research, write an engaging 500‑word blog post for a general
+    audience while staying technically accurate.
+  expected_output: >
+    A well‑structured, readable post on current AI trends.
+  

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "my-crew"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{ include = "my_crew", from = "src" }]
+include = ["src/my_crew/config/*.yaml"]  # <- Ensures YAMLs are packaged
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"  # <- Python version fix
+crewai = { extras = ["tools"], version = "^0.51.1" }  # <- Latest 0.51.x (recommended)
+setuptools = "^80.9.0"
+
+[tool.poetry.scripts]
+my_crew = "my_crew.main:run"
+train = "my_crew.main:train"
+replay = "my_crew.main:replay"
+test = "my_crew.main:test"
