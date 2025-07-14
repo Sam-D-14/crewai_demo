@@ -1,0 +1,6 @@
+[console_scripts]
+my_crew = my_crew.main:run
+replay = my_crew.main:replay
+run_crew = my_crew.main:run
+test = my_crew.main:test
+train = my_crew.main:train

@@ -13,3 +13,13 @@ writing_task:
   expected_output: >
     A well‑structured, readable post on current AI trends.
   
+# tasks.yaml
+explore_task:
+  description: "Use web search and browsing to gather references for this repo."
+  expected_output: "List of URLs and summary for each."
+  agent: explorer
+
+inspect_task:
+  description: "Analyze the repository files, generate module summaries."
+  expected_output: "Markdown summary of each file."
+  agent: file_inspector

@@ -1,6 +1,12 @@
 from pathlib import Path
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
+from crewai_tools import (
+    FileTool,       # for working with files in the workspace
+    WebSearchTool,  # general-purpose web search
+    BrowserTool,    # scraping/web-browsing
+    CodeAnalysisTool  # semantic code analysis
+)
 
 ROOT = Path(__file__).parent
 @CrewBase
@@ -17,6 +23,23 @@ class MyCrewCrew:
     def writer(self) -> Agent:
         return Agent(config=self.agents_config["writer"], verbose=True)
 
+    @agent
+    def explorer(self) -> Agent:
+        return Agent(
+            config=self.agents_config['explorer'],
+            tools=[WebSearchTool(), BrowserTool()],
+            verbose=True
+        )
+
+    @agent
+    def file_inspector(self) -> Agent:
+        return Agent(
+            config=self.agents_config['file_inspector'],
+            tools=[FileTool(), CodeAnalysisTool()],
+            verbose=True
+        )
+
+
     # ---------- Tasks ----------
     @task
     def research_task(self) -> Task:
@@ -28,6 +51,17 @@ class MyCrewCrew:
         return Task(config=self.tasks_config["writing_task"],
                     agent=self.writer())
 
+    @task
+    def explore_task(self) -> Task:
+        return Task(config=self.tasks_config['explore_task'])
+
+    @task
+    def inspect_task(self) -> Task:
+        return Task(config=self.tasks_config['inspect_task'], output_file='analysis.md')
+
+
+
+    
     # ---------- Crew ----------
     @crew
     def crew(self) -> Crew:

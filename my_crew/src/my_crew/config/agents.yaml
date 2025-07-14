@@ -13,3 +13,13 @@ writer:
     Craft compelling, accessible content from research.
   backstory: >
     You transform complex ideas into engaging narratives.
+
+
+# agents.yaml
+explorer:
+  role: "Web Explorer"
+  goal: "Search for public usage, examples, or discussions of this demo."
+file_inspector:
+  role: "Code Inspector"
+  goal: "Inspect the local codebase to extract structure, functions, dependencies."
+
